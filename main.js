@@ -77,12 +77,15 @@ function validate() {
 /* My event handler */
 var sendBtn = document.getElementById('msg-send');
 sendBtn.onclick = function () {
-    var errorMsg = validate();                                              //Grabbing all the return values from validate()
+    // Handler Closed Temporary
+    /*var errorMsg = validate();                                              //Grabbing all the return values from validate()
     if (errorMsg.length > 0){
         document.getElementById('answer-area').innerText = errorMsg.join('\n');
     } else {
         document.forms["names-form"].submit();
-    }
+    }*/
+    document.forms["names-form"].submit();
+
 };
 
 var resetBtn = document.getElementById('msg-clear');                                //Clear error messages and fields from form
