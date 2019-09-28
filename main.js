@@ -77,13 +77,12 @@ function validate() {
 /* My event handler */
 var sendBtn = document.getElementById('msg-send');
 sendBtn.onclick = function () {
-    // Handler Closed Temporary
-    /*var errorMsg = validate();                                              //Grabbing all the return values from validate()
+    var errorMsg = validate();                                              //Grabbing all the return values from validate()
     if (errorMsg.length > 0){
         document.getElementById('answer-area').innerText = errorMsg.join('\n');
     } else {
         document.forms["names-form"].submit();
-    }*/
+    }
     document.forms["names-form"].submit();
 
 };
