@@ -31,25 +31,30 @@ function main() {
             redirect('email-error.html');
         }
 
-        if ($name && $from01 && $from02 && $title && $msg) {
+        //After everything was striped, create HEADER
+        if (!empty($name) && !empty($from01) && !empty($from02) && !empty($title) && !empty($msg)) {
             $headers = "From: $name\r\n";
             $headers .= "Reply-To: $from01\r\n";
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-type: text/plain; charset=iso-8859-1\r\n";
 
-            $checkmail = mail($to, $title . ' : ' . $name, $msg, $headers);
-
-            if ($checkmail == true) {
+            //Send email after HEADER is created
+            if (mail($to, $title, $name, '\n\n' . $msg, $headers)) {
                 redirect('email-success.html');
+            } else {
+                redirect('email-error.html');
             }
 
         } else {
+            //Send to error page when HEADER can't created
             redirect('email-error.html');
         }
 
+    } else {
+        //Sent to error page when any fields are empty
+        redirect('email-error.html');
     }
 }
 
 main();
 
-?>
